@@ -1,0 +1,24 @@
+const express = require('express');
+
+const router = express.Router();
+
+const viewController =  require(`${__dirname}/../../viewController`);
+const authController = require(`${__dirname}/../../authController`)
+const bookingController = require(`${__dirname}/../../bookingController`)
+
+ 
+   //router.use(authController.isLoggedIn);
+
+  router.get('/',authController.isLoggedIn,bookingController.createBookingChekout,viewController.getOverview);
+
+  router.get('/tour/:slug',authController.isLoggedIn,viewController.getTour)
+
+  router.get('/login',authController.isLoggedIn, viewController.getLoginForm); //
+
+  router.get('/me',authController.protect,viewController.getAccount);
+  
+  router.get('/My-Bookings',authController.protect,viewController.getMyTours);
+
+
+  module.exports = router ;
+  
