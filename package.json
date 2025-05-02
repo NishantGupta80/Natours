@@ -2,14 +2,13 @@
   "name": "natours",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "debug": "ndb server.js",
     "start": "npx nodemon server.js",
     "start:prod": "set NODE_ENV=production&&npx nodemon server.js",
-    "watch:js": "parcel ./public/js/index.js --dist-dir ./public/dist/js",
-    "build:js": "parcel build ./public/js/index.js --dist-dir ./public/dist/js"
+    "watch:js": "parcel watch ./public/js/index.js --dist-dir ./public/dist/js/ --no-source-maps",
+    "build:js": "parcel build ./public/js/index.js --dist-dir ./public/dist/js/ --no-source-maps"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +17,7 @@
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.8.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
@@ -47,5 +47,8 @@
     "buffer": "^6.0.3",
     "parcel": "^2.12.0",
     "process": "^0.11.10"
+  },
+  "targets": {
+    "main": false
   }
 }

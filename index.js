@@ -12,6 +12,7 @@ const { whitelist } = require("validator");
 const hpp=require('hpp');
 const path=require('path');
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
 
 
 const app = express();
@@ -57,6 +58,8 @@ const limiter=rateLimit({
 app.use('/api',limiter);
 
 
+app.use(compression()); // compress all the responses
+
  // normal Middlewares
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
@@ -92,7 +95,7 @@ app.all('*',(req,res,next)=>{
 })
 
 
-///////    Defining a Global  Moiddleware
+///////   Defining a Global  Moiddleware
 
 app.use(ErrorHandler);
 

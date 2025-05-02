@@ -9,7 +9,7 @@ import {showAlert} from './alert';
     try{
         const res =  await axios({
             method:'POST',
-            url: "http://localhost:3000/api/v1/users/login",
+            url: "/api/v1/users/login",
             data : {
                 email : email,
                 password : password
@@ -33,7 +33,7 @@ import {showAlert} from './alert';
 export const logout = async () =>{
         const res =  await axios({
             method:'GET',
-            url: "http://localhost:3000/api/v1/users/logout",
+            url: "/api/v1/users/logout",
         })
         if(res.data.status == 'success') location.reload(true);
   
